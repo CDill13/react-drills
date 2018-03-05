@@ -1,28 +1,34 @@
 import React, { Component } from 'react';
 import './App.css';
 
-//make a page that will take user input text and spit out the same text in a line below the input.
-
-
 class App extends Component {
   constructor(){
-    super()
-    this.state ={
-      textBox: ""
-    }
+    super();
+    this.state = {}
+    message: ""
+    otherMessage: ""
   }
 
- copyText(value){
-   this.setState({
-      textBox: value
-   })
- } 
+  messageCopy(value){
+    this.setState({
+      message: value
+    })
+  }
+
+  clickHandler(){
+    this.setState({
+      otherMessage: this.state.message
+    })
+  }
 
   render() {
     return (
       <div className="App">
-        <input onChange={(e) => this.copyText(e.target.value)  } />
-        <p>{this.state.textBox}</p>
+      <input onChange={(e) => this.messageCopy(e.target.value) }/>
+        <p> {this.state.message} </p>
+        <p>Do you want to press the button?</p>
+        <button onClick={() => this.clickHandler() } >BUTTON!!!</button>
+        <p> {this.state.otherMessage} </p>          
       </div>
     );
   }
